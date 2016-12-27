@@ -1,0 +1,29 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block navbar %}
+{{nav.main_nav.render()}}
+{% endblock %}
+
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+			 	{% block page_content %}
+    		{% endblock %}
+			</div>
+		</div>
+	</div>
+
+  <footer>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          Progettato da Me
+        </div>
+  		</div>
+  	</div>
+  </footer>
+{% endblock %}
