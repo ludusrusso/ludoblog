@@ -1,3 +1,4 @@
 *.pyc
 docs/_*
 .DS_Store
+*.sqlite
