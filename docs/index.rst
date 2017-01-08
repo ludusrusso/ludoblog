@@ -12,3 +12,4 @@ Quindi, questa guida seguirà, passo passo, i vari step che e le varie migliorie
 
    ./setup
    ./templating
+   ./models
