@@ -1,0 +1,9 @@
+{% extends "main/base.html" %}
+{% import  "bootstrap/wtf.html" as wtf %}
+{% block title %}ludusrusso.cc - Edit Post {% endblock %}
+
+{% block page_content %}
+  <div class="post-body">
+    {{ wtf.quick_form(form) }}
+  </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% block title %}{{post.title}}{% endblock %}
+
+{% block styles %}
+{{super()}}
+
+<style media="screen">
+  .post-body img {
+    max-width: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+
+  <div class="page-header">
+    <h1>{{ post.title }}</h1>
+    <p>
+      Autore <span class="label label-primary">{{post.author}}</span>
+      Data <span class="label label-info">{{post.created_at.date()}}</span>
+    </p>
+  </div>
+
+  <div class="post-body">
+    {{ post.body|markdown }}
+  </div>
+{% endblock %}
