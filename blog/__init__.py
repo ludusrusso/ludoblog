@@ -25,7 +25,7 @@ def create_app(config_name='default'):
     bootstrap.init_app(app)
     nav.init_app(app)
     db.init_app(app)
-    markdown.init_app()
+    markdown.init_app(app)
     admin.init_app(app)
 
     from .models import User, Role

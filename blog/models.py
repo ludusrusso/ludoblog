@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(255))
     about = db.Column(db.Text())
     roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
-    posts = db.relationship('BlogPost', backref='author', lazy='dynamic')
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return "<User %r>"%self.email
@@ -56,15 +56,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), unique=True)
-    slug = db.Column(db.String(255), index=True, unique=True, default="")
     body = db.Column(db.Text)
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     last_edit = db.Column(db.DateTime, index=True, onupdate=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-    def __init__(self, *args, **kwargs):
-        super(Post, self).__init__(**kwargs)
-        self.created_at = datetime.utcnow()
-        if self.slug is None:
-            self.slug = str(self.created_at.date()) + 'slug'
-        print self.__tablename__ + ".__init__"

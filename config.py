@@ -5,7 +5,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'stringa difficile da indovinare'
 
     SQLALCHEMY_COMMIT_ON_TEARDOWN = 'True'
-
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     BLOG_ADMIN_MAIL = os.environ.get('BLOG_ADMIN_MAIL') or 'admin@admin.com'
     BLOG_ADMIN_PASSWORD = os.environ.get('BLOG_ADMIN_PASSWORD') or 'admin'
 
