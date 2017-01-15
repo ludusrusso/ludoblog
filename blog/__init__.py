@@ -5,9 +5,11 @@ from config import config
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_superadmin import Admin
+from flask_misaka import Misaka
 
 bootstrap = Bootstrap()
 nav = Nav()
+markdown = Misaka()
 
 db = SQLAlchemy()
 security = Security()
@@ -23,6 +25,7 @@ def create_app(config_name='default'):
     bootstrap.init_app(app)
     nav.init_app(app)
     db.init_app(app)
+    markdown.init_app()
     admin.init_app(app)
 
     from .models import User, Role

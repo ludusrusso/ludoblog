@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 from blog import create_app, db
-from flask_script import Manager
+from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
+from blog.models import *
 
 app = create_app()
 manager = Manager(app)
@@ -10,6 +11,11 @@ manager = Manager(app)
 migrate = Migrate(app, db)
 
 manager.add_command('db', MigrateCommand)
+
+def make_shell_context():
+    return dict(app=app, db=db, User=User, Role=Role, Post=Post)
+manager.add_command("shell", Shell(make_context=make_shell_context))
+
 
 @manager.command
 def deploy():
