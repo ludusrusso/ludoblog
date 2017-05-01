@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from flask_nav import Nav
+from flask_nav import Nav, register_renderer
 from config import config
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security, SQLAlchemyUserDatastore
@@ -37,6 +37,8 @@ def create_app(config_name='default'):
 
     from .main import main as main_bp
     app.register_blueprint(main_bp)
-    return app
 
-from .navbar import main_nav
+    from .navbar import main_nav, RightRenderer
+    register_renderer(app, 'right_rendered', RightRenderer)
+
+    return app
