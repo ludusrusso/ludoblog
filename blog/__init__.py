@@ -28,12 +28,13 @@ def create_app(config_name='default'):
     markdown.init_app(app)
     admin.init_app(app)
 
-    from .models import User, Role
+    from .models import User, Role, Post
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security.init_app(app, user_datastore)
 
     admin.register(User, admin_class=ModelAdmin, session=db.session)
     admin.register(Role, admin_class=ModelAdmin, session=db.session)
+    admin.register(Post, admin_class=ModelAdmin, session=db.session)
 
     from .main import main as main_bp
     app.register_blueprint(main_bp)

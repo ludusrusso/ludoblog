@@ -39,6 +39,9 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return "<User %r>"%self.email
 
+    def __str__(self):
+        return "%s"%self.username
+
     @staticmethod
     def insert_admin():
         from flask import current_app
@@ -60,3 +63,9 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     last_edit = db.Column(db.DateTime, index=True, onupdate=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def url(self):
+        return '/posts/id/' + str(self.id)
+
+    def preview(self, nlines=5):
+        return '\n'.join(self.body.split('\n')[:nlines])

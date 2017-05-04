@@ -1,6 +1,4 @@
 {% extends "main/base.html" %}
-{% from "main/_macros.html" import render_post %}
-
 
 {% block title %}{{post.title}}{% endblock %}
 
@@ -17,6 +15,16 @@
 
 {% block page_content %}
 
-{{ render_post(post) }}
+<div class="post">
+  <div class="page-header">
+    <h1>{{ post.title }}</h1>
+    Autore <span class="label label-primary">{{post.author}}</span> Data <span class="label label-info">{{post.created_at.date()}}</span>
+  </div>
+
+  <div class="post-body">
+    {{ post.body|markdown }}
+  </div>
+
+</div>
 
 {% endblock %}

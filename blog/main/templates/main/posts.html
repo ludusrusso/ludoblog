@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% block title %} Posts {% endblock %}
+
+{% block styles %}
+{{super()}}
+
+<style media="screen">
+  .post-body img {
+    max-width: 100%;
+  }
+</style>
+
+{% endblock %}
+
+{% block page_content %}
+
+{% for post in posts %}
+  <div class="post">
+    <div class="page-header">
+      <a href="{{post.url()}}"> <h1>{{ post.title }}</h1></a>
+      Autore <span class="label label-primary">{{post.author}}</span> Data <span class="label label-info">{{post.created_at.date()}}</span>
+    </div>
+    <div class="post-body">
+      {{ post.preview(10) | markdown }}
+    </div>
+
+    <a href="{{post.url()}}"> Continua a leggere ...</a>
+  </div>
+{% endfor %}
+
+{% endblock %}

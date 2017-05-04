@@ -1,5 +1,5 @@
 from . import main
-from flask import render_template, abort, redirect, url_for
+from flask import render_template, abort, redirect, url_for, current_app
 
 from flask_security import current_user, roles_accepted
 from ..models import Post
@@ -16,8 +16,8 @@ def post(id):
     return render_template('main/post.html', post=post)
 
 @main.route('/posts')
-def posts(page):
-    posts = Post.query.order_by(Post.created_at.desc()).paginate(1, 3, True).items
+def posts():
+    posts = Post.query.order_by(Post.created_at.desc()).paginate(1, current_app.config['PAGE_ELEM_NUMBER'], True).items
     return render_template('main/posts.html', posts=posts)
 
 @main.route('/posts/new', methods=['post', 'get'])
