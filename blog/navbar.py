@@ -13,6 +13,7 @@ from visitor import Visitor
 def main_nav():
     navbar = Navbar('Blog')
     navbar.items.append(View('Home', 'main.index'))
+    navbar.items.append(View('Posts', 'main.posts'))
     if current_user.is_authenticated:
         usergrp = []
         usergrp.append(current_user.email)
