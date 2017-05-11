@@ -1,7 +1,42 @@
 {% extends "main/base.html" %}
-{% block page_content %}
-<div class="page-header">
-  <h1>Benvenuti nel mio blog!</h1>
+{% block content %}
+
+<div class="jumbotron cover">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          Ludovico Russo
+        </h1>
+        <h2>
+          Sono un <strong class="jobs"></strong>
+        </h2>
+      </div>
+    </div>
+    </div>
 </div>
 
+<footer>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        Progettato da Me
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+{% endblock %}
+
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/static/external/typed.min.js"></script>
+  <script src="/static/js/index.js"></script>
 {% endblock %}
