@@ -1,6 +1,4 @@
-
-
-# LudoBlog
+# LudoBlog
 
 ![](imgs/cover_text_typed.png)
 
